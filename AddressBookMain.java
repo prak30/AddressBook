@@ -5,7 +5,7 @@ import java.util.Hashtable;
 import java.util.Scanner;
 
 public class AddressBookMain {
-	static Dictionary<String, ArrayList<ContactStore>> dictionary  = new Hashtable<>();
+	static Hashtable<Integer, ArrayList<ContactStore>> dictionary  = new Hashtable<>();
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -13,8 +13,6 @@ public class AddressBookMain {
         int addressBookLimit = scanner.nextInt();
         scanner.nextLine();
         for (int i = 1; i <= addressBookLimit; i++) {
-            System.out.println("Enter address book name");
-            String name = scanner.nextLine();
             ArrayList<ContactStore> arrayList = new <ContactStore>ArrayList();
             boolean check = true;
             while (check) {
@@ -36,8 +34,9 @@ public class AddressBookMain {
                     case 4 -> check = false;
                 }
             }
-            dictionary.put(name, arrayList);
+            dictionary.put(i, arrayList);
         }
         System.out.println(dictionary);
+        ContactStore.search(dictionary);
     }
 }
